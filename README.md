@@ -5,7 +5,7 @@ Libreverse is a self-hosted alternative to the well-known large hosted collectio
 
 ## Models
 
-Originally, this repository was meant to be a collection of 3D models only. The majority was designed for 3D printing, using appropriate [design guidelines](design-guidelines.md). However, the website generator quickly turned out to be usable as a general-purpose self-hosted solution.
+Originally, this repository was meant to be a collection of 3D models only. The majority was designed for 3D printing. However, the website generator quickly turned out to be usable as a general-purpose self-hosted solution.
 
 Therefore, the original models are now available in [libreverse-models](https://github.com/TheAssassin/libreverse-models).
 
