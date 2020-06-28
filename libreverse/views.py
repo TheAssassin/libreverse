@@ -10,7 +10,7 @@ bp = Blueprint("views", __name__, static_folder="static", template_folder="templ
 
 
 def models_dir():
-    return current_app.config["MODELS_DIR"]
+    return os.path.abspath(current_app.config["MODELS_DIR"])
 
 
 def parse_readme(readme_path: str):
@@ -149,4 +149,8 @@ def static_files(path, filename):
         raise NotFound()
 
     abspath = safe_join(models_dir(), path, filename)
-    return send_file(abspath)
+
+    try:
+        return send_file(abspath)
+    except IOError:
+        raise NotFound()
