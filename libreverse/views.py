@@ -126,7 +126,13 @@ def router(path: str):
     # let's see if this is an index page or a "content" dir
     # the detection works by checking for subdirectories; if there are any, we generate an index page, otherwise we
     # try to generate a model page
-    has_subdirs = any([os.path.isdir(safe_join(request_dir, i)) for i in os.listdir(request_dir)])
+    dir_contents = os.listdir(request_dir)
+
+    # completely empty directories should not be visible, similar like how Git works
+    if not dir_contents:
+        raise NotFound()
+
+    has_subdirs = any([os.path.isdir(safe_join(request_dir, i)) for i in dir_contents])
 
     if has_subdirs:
         return render_index_page(path)
