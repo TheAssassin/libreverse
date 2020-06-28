@@ -1,9 +1,11 @@
-# 3D Models
+# Libreverse
 
-This repository provides a collection of 3D models. The majority was designed for 3D printing, using appropriate [design guidelines](design-guidelines.md).
+Libreverse is a self-hosted alternative to the well-known large hosted collections of models for 3D printing, laser cutting, etc. (the stuff makers are interested in typically). It's a sort of static-site generator with an interactive server for development.
+
+Originally, this repository was meant to be a collection of 3D models only. The majority was designed for 3D printing, using appropriate [design guidelines](design-guidelines.md). However, the website generator quickly turned out to be usable as a general-purpose self-hosted solution.
 
 
-## File formats
+## File Formats
 
 Most of the models are created in [FreeCAD](https://freecadweb.org). A few of them, especially more simple ones or models which allow for parametrization, are written in [OpenSCAD](https://openscad.org).
 
