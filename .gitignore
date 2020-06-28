@@ -1,3 +1,7 @@
 *.png
 *.stl
 *.jpg
+.idea/
+__pycache__/
+*.py[c|o]
+frozen/
