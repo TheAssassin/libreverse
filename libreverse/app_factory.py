@@ -14,6 +14,9 @@ def create_app(config: dict = None) -> Flask:
 
     app.config.setdefault("FREEZER_DESTINATION", os.path.join(os.getcwd(), "frozen"))
 
+    # load configuration from current working directory, if any
+    app.config.from_pyfile(os.path.join(os.getcwd(), "config.py"))
+
     if config is not None:
         app.config.update(config)
 
