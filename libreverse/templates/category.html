@@ -1,0 +1,20 @@
+{% extends "partial/layout.html" %}
+
+{% block content %}
+
+<h1>{{ title }}</h1>
+
+{% if description %}
+{{ description }}
+{% endif %}
+
+<p>Items available in this category:</p>
+<ul>
+{% for item in items|sort() %}
+<li>
+    <a href="{{ url_for('views.router', path=safe_join(current_dir, item)) }}">{{ item }}</a>
+</li>
+{% endfor %}
+</ul>
+
+{% endblock %}

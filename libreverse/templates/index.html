@@ -1,0 +1,16 @@
+{% extends "partial/layout.html" %}
+
+{% block content %}
+
+<h1>Libreverse</h1>
+
+<p>Available categories:</p>
+<ul>
+{% for category in categories|sort() %}
+    <li>
+        <a href="{{ url_for('views.router', path=category) }}">{{ category }}</a>
+    </li>
+{% endfor %}
+</ul>
+
+{% endblock %}
