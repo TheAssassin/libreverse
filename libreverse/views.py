@@ -141,11 +141,6 @@ def router(path: str):
         return render_model_page(path)
 
 
-# @bp.route("/<path:path>.png")
-# @bp.route("/<path:path>.jpg")
-# @bp.route("/<path:path>.stl")
-# @bp.route("/<path:path>.scad")
-# @bp.route("/<path:path>.FCStd")
 @bp.route("/<path:path>/<filename>")
 def static_files(path, filename):
     ext = os.path.splitext(filename)[-1]
