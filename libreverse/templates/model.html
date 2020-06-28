@@ -25,7 +25,7 @@
                     <h2>Download</h2>
                     {% for filename in screenshot_files + stl_files %}
                     <p>
-                        <a href="{{ filename }}">{{ filename }}</a>
+                        <a href="{{ url_for('views.static_files', path=current_dir, filename=filename) }}">{{ filename }}</a>
                     </p>
                     {% endfor %}
                 </div>
