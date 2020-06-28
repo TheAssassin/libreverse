@@ -1,0 +1,17 @@
+# License information
+
+There's two kinds of items in this repository: models data and code.
+
+
+## Models Data License
+
+All models are, unless noted otherwise, available under the CC-By 4.0 International license. Please refer to [CONTENT-LICENSE.txt](CONTENT-LICENSE.txt) for more information.
+
+Models data involves all files in `models/`.
+
+
+## Code License
+
+There is some third-party code contained in this repository. This code is copyright by their respective authors.
+
+All remaining files in this repository are considered code files and are licensed under the terms of the MIT license. Please see [CODE-LICENSE.txt](CODE-LICENSE.txt) for more information.
