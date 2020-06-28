@@ -3,6 +3,7 @@ import os
 import markdown as markdown
 from flask import Blueprint, render_template, current_app, redirect, url_for, request, safe_join, send_file
 from lxml import html
+from lxml.etree import LxmlError
 from markupsafe import Markup
 from werkzeug.exceptions import NotFound
 
@@ -17,7 +18,11 @@ def parse_readme(readme_path: str):
     with open(readme_path) as f:
         readme = markdown.markdown(f.read())
 
-    readme_html = html.fromstring(readme)
+    try:
+        readme_html = html.fromstring(readme)
+
+    except LxmlError:
+        raise ValueError("failed to parse README")
 
     # extract title from markdown document and delete it from the rest of the document
     try:
@@ -46,7 +51,7 @@ def render_model_page(current_dir: str):
     try:
         title, description = parse_readme(safe_join(abs_dir, "README.md"))
 
-    except IOError:
+    except (IOError, ValueError):
         title = description = None
 
     if not title:
@@ -78,7 +83,7 @@ def render_index_page(current_dir: str):
     try:
         title, description = parse_readme(safe_join(abs_dir, "README.md"))
 
-    except IOError:
+    except (IOError, ValueError):
         title = description = None
 
     if not title:
