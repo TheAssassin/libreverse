@@ -6,3 +6,4 @@ __pycache__/
 *.py[c|o]
 frozen/
 *models*/
+*config*.py
