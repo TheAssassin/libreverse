@@ -12,14 +12,17 @@ def create_app(config: dict = None) -> Flask:
 
     app = Flask(__name__)
 
-    app.config.setdefault("MODELS_DIR", os.path.join(os.path.dirname(__file__), "..", "models"))
-    app.config.setdefault("FREEZER_DESTINATION", os.path.join(os.path.dirname(__file__), "..", "frozen"))
+    app.config.setdefault("FREEZER_DESTINATION", os.path.join(os.getcwd(), "frozen"))
 
     if config is not None:
         app.config.update(config)
 
-    if not os.path.isdir(app.config["MODELS_DIR"]):
-        raise IOError("Could not find models dir %s" % app.config["MODELS_DIR"])
+    try:
+        if not os.path.isdir(app.config["MODELS_DIR"]):
+            raise IOError("Could not find models dir %s" % app.config["MODELS_DIR"])
+
+    except KeyError:
+        raise ValueError("MODELS_DIR not configured")
 
     # register views
     from .views import bp
