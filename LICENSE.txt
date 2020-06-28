@@ -1,17 +1,19 @@
-# License information
+Copyright (c) 2020 TheAssassin <theassassin@assassinate-you.net>
 
-There's two kinds of items in this repository: models data and code.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-## Models Data License
-
-All models are, unless noted otherwise, available under the CC-By 4.0 International license. Please refer to [CONTENT-LICENSE.txt](CONTENT-LICENSE.txt) for more information.
-
-Models data involves all files in `models/`.
-
-
-## Code License
-
-There is some third-party code contained in this repository. This code is copyright by their respective authors.
-
-All remaining files in this repository are considered code files and are licensed under the terms of the MIT license. Please see [CODE-LICENSE.txt](CODE-LICENSE.txt) for more information.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
