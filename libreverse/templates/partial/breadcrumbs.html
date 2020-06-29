@@ -1,21 +1,23 @@
-<nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-        <li class="breadcrum-item">
-            <a href="{{ url_for('views.router', path='/') }}">Home</a>
-        </li>
-
-        {% if current_dir %}
-            {% set crumbs = current_dir.split("/") %}
-            {% for crumb in crumbs %}
-            <span>&nbsp;/&nbsp;</span>
-
-            <li
-                class="breadcrumb-item {% if loop.last %}active{% endif %}"
-                {% if loop.last %}aria-current="page"{% endif %}
-            >
-                <a href="{{ url_for('views.router', path=safe_join(*crumbs[:loop.index])) }}">{{ crumb }}</a>
+<div class="container" style="margin-top: 30px;">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrum-item">
+                <a href="{{ url_for('views.router', path='/') }}">Home</a>
             </li>
-            {% endfor %}
-        {% endif %}
-    </ol>
-</nav>
+
+            {% if current_dir %}
+                {% set crumbs = current_dir.split("/") %}
+                {% for crumb in crumbs %}
+                <span>&nbsp;/&nbsp;</span>
+
+                <li
+                    class="breadcrumb-item {% if loop.last %}active{% endif %}"
+                    {% if loop.last %}aria-current="page"{% endif %}
+                >
+                    <a href="{{ url_for('views.router', path=safe_join(*crumbs[:loop.index])) }}">{{ crumb }}</a>
+                </li>
+                {% endfor %}
+            {% endif %}
+        </ol>
+    </nav>
+</div>
