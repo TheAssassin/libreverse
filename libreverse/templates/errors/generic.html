@@ -1,0 +1,11 @@
+{% extends "partial/layout.html" %}
+
+{% set title = "%d: %s" % (exc.code, exc.name) %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<h1>{{ title }}</h1>
+
+<p>{{ exc.description }}</p>
+{% endblock %}

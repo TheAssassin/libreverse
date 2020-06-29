@@ -159,3 +159,8 @@ def static_files(path, filename):
         return send_file(abspath)
     except IOError:
         raise NotFound()
+
+
+@bp.errorhandler(404)
+def not_found(exc):
+    return render_template("errors/generic.html", exc=exc), exc.code
