@@ -6,67 +6,63 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container">
-        <h1>{{ title }}</h1>
-    </div>
+    <h1>{{ title }}</h1>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-6">
+    <div class="row">
+        <div class="col-6">
+            <p>
+                {% for tag in tags %}
+                <a href="#" class="badge badge-pill badge-info">{{ tag }}</a>
+                {% endfor %}
+            </p>
+
+            {{ description }}
+
+            <div style="margin-top: 50px;">
+                <h2>Download</h2>
+                {% for filename in model_files + stl_files + screenshot_files %}
                 <p>
-                    {% for tag in tags %}
-                    <a href="#" class="badge badge-pill badge-info">{{ tag }}</a>
-                    {% endfor %}
+                    <a href="{{ url_for('views.static_files', path=current_dir, filename=filename) }}">{{ filename }}</a>
                 </p>
-
-                {{ description }}
-
-                <div style="margin-top: 50px;">
-                    <h2>Download</h2>
-                    {% for filename in model_files + stl_files + screenshot_files %}
-                    <p>
-                        <a href="{{ url_for('views.static_files', path=current_dir, filename=filename) }}">{{ filename }}</a>
-                    </p>
-                    {% endfor %}
-                </div>
+                {% endfor %}
             </div>
+        </div>
 
-            <div class="col-6">
-                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                    {% for screenshot in screenshot_files %}
-                    <li class="nav-item">
-                        <a class="nav-link {% if loop.first %}active{% endif %}" id="pills-screenshot-{{ loop.index }}-tab" data-toggle="pill"
-                           href="#pills-screenshot-{{ loop.index }}" role="tab"
-                           aria-controls="pills-screenshot-{{ loop.index }}" aria-selected="true">
-                            Screenshot {{ loop.index }}
-                        </a>
-                    </li>
-                    {% endfor %}
+        <div class="col-6">
+            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                {% for screenshot in screenshot_files %}
+                <li class="nav-item">
+                    <a class="nav-link {% if loop.first %}active{% endif %}" id="pills-screenshot-{{ loop.index }}-tab" data-toggle="pill"
+                       href="#pills-screenshot-{{ loop.index }}" role="tab"
+                       aria-controls="pills-screenshot-{{ loop.index }}" aria-selected="true">
+                        Screenshot {{ loop.index }}
+                    </a>
+                </li>
+                {% endfor %}
 
-                    {% for stl in stl_files %}
-                    <li class="nav-item">
-                        <a class="nav-link" id="pills-preview-{{ loop.index }}-tab" data-toggle="pill"
-                           href="#pills-preview-{{ loop.index }}" role="tab"
-                           aria-controls="pills-preview-{{ loop.index }}" aria-selected="false">
-                            Preview STL {{ loop.index }}
-                        </a>
-                    </li>
-                    {% endfor %}
-                </ul>
+                {% for stl in stl_files %}
+                <li class="nav-item">
+                    <a class="nav-link" id="pills-preview-{{ loop.index }}-tab" data-toggle="pill"
+                       href="#pills-preview-{{ loop.index }}" role="tab"
+                       aria-controls="pills-preview-{{ loop.index }}" aria-selected="false">
+                        Preview STL {{ loop.index }}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
 
-                <div class="tab-content" id="pills-tabContent">
-                    {% for screenshot in screenshot_files %}
-                    <div class="tab-pane fade {% if loop.first %}show active{% endif %}" id="pills-screenshot-{{ loop.index }}" role="tabpanel" aria-labelledby="pills-screenshot-{{ loop.index }}-tab">
-                        <img src="{{ url_for('views.static_files', path=current_dir, filename=screenshot) }}" class="w-100"/>
-                    </div>
-                    {% endfor %}
-
-                    {% for stl in stl_files %}
-                    <div class="tab-pane fade" id="pills-preview-{{ loop.index }}" role="tabpanel" aria-labelledby="pills-preview-{{ loop.index }}-tab">
-                        <div id="preview-stl-{{loop.index}}" class="madeleine w-100"></div>
-                    </div>
-                    {% endfor %}
+            <div class="tab-content" id="pills-tabContent">
+                {% for screenshot in screenshot_files %}
+                <div class="tab-pane fade {% if loop.first %}show active{% endif %}" id="pills-screenshot-{{ loop.index }}" role="tabpanel" aria-labelledby="pills-screenshot-{{ loop.index }}-tab">
+                    <img src="{{ url_for('views.static_files', path=current_dir, filename=screenshot) }}" class="w-100"/>
                 </div>
+                {% endfor %}
+
+                {% for stl in stl_files %}
+                <div class="tab-pane fade" id="pills-preview-{{ loop.index }}" role="tabpanel" aria-labelledby="pills-preview-{{ loop.index }}-tab">
+                    <div id="preview-stl-{{loop.index}}" class="madeleine w-100"></div>
+                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
