@@ -34,6 +34,7 @@ def create_app(config: dict = None) -> Flask:
     # make some Python functions available in Jinja2
     app.jinja_env.globals.update(
         safe_join=safe_join,
+        sorted=sorted,
     )
 
     return app
