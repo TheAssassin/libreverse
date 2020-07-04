@@ -1,10 +1,5 @@
 {% extends "partial/layout.html" %}
 
-{% block head %}
-{{ super() }}
-<link href="{{ url_for('static', filename='madeleine/css/Madeleine.css') }}" rel="stylesheet">
-{% endblock %}
-
 {% block content %}
     <h1>{{ title }}</h1>
 
@@ -67,7 +62,7 @@
 
                 {% for stl in stl_files %}
                 <div class="tab-pane fade" id="pills-preview-{{ loop.index }}" role="tabpanel" aria-labelledby="pills-preview-{{ loop.index }}-tab">
-                    <div id="preview-stl-{{loop.index}}" class="madeleine w-100"></div>
+                    <div id="preview-stl-{{loop.index}}" class="w-100" style="height: 500px;"></div>
                 </div>
                 {% endfor %}
             </div>
@@ -77,20 +72,20 @@
 
 {% block scripts %}
 {{ super() }}
-<script src="{{ url_for('static', filename='madeleine/lib/detector.js') }}"></script>
-<script src="{{ url_for('static', filename='madeleine/lib/stats.js') }}"></script>
-<script src="{{ url_for('static', filename='madeleine/lib/three.min.js') }}"></script>
-<script src="{{ url_for('static', filename='madeleine/Madeleine.js') }}"></script>
+
+<script src="{{ url_for('static', filename='js/three.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/STLLoader.js') }}"></script>
+<script src="{{ url_for('static', filename='js/OrbitControls.js') }}"></script>
+<script src="{{ url_for('static', filename='js/stl-viewer.js') }}"></script>
 
 <script>
-    window.onload = function(){
+    window.onload = function() {
         {% for stl in stl_files %}
-        new Madeleine({
-            target: "preview-stl-{{loop.index}}",
-            data: "{{ url_for('views.static_files', path=current_dir, filename=stl) }}",
-            {# with Frozen-Flask we need to make sure all uses of url_for return real responses #}
-            path: "{{ url_for('static', filename='madeleine/Madeleine.js').replace('/Madeleine.js', '/') }}"
-        });
+        setup_stl_viewer(
+            "{{ url_for('views.static_files', path=current_dir, filename=stl) }}",
+            document.getElementById("preview-stl-{{loop.index}}"),
+            document.querySelector(".tab-content"),
+        );
         {% endfor %}
     };
 </script>
